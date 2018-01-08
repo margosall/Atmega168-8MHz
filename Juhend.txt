@@ -2,29 +2,23 @@ Eeldused:
 1) Toimiv Arduino, millel juba on bootloader.
 2) atmega168 kiip
 3) 16MHz kristall
-4) Juhtmed ja kaine mõistus
+4) Juhtmed
 5) USB to ttl converter, soovitavalt 5V ja DTR pinniga Arduino resettimiseks ja sünkroniseerimiseks.
-6) 10KΩ takisti
-7) 100 nF kondensaator
+6) 10kΩ takisti
+7) 100 nF keraamiline kondensaator
 
 1. Kopeeri kaasas olevast failist sisu enda installi kaustas oleva boards.txt faili lõppu
 /arduino-1.8.6/hardware/arduino/avr/boards.txt
-
 Kui sul Arduino IDE töötas, siis tee sellele restart.
-
 2. Võta töötav arduino board, soovitatavalt UNO
-
 3. Ava examples ArduinoISP
-
 4. Eemalda koodis #define USE_OLD_STYLE_WIRING eest // (uncomment)
-
 5. Lae kood enda valitud töötavale arduinole.
-
 6. Ühenda oma atmega168 kiip Arduinoga
 #VCC = 5V
 Arduino -- Atmega 168
 D10 	-> 1
-VCC 	-  10KΩ -> 1 (Pull up resistor to pin 1)
+VCC 	-  10kΩ -> 1 (Pull up resistor to pin 1)
 VCC 	-> 7
 GND 	-> 8
 D11 	-> 17
@@ -51,7 +45,7 @@ DTR - 100 nF - 1 (RESET)
 11. Valida programmatooriks jällegi enda lemmik, näiteks AVR ISP mkII
 Ja proovida peale laadida Blink programmi, kui kõik on õigesti tehtud, hakkab Pin 13 külge ühendatud LED vilkuma.
 
-Siit edasi saab juba teha kõike, mida ikka Arduinoga. 
+Siit edasi saab juba teha kõike, mida ikka Arduinoga.
 Sellise ostsillaatori kasutamisel tuleb aga meeles pidada, et kasutada ainult baud rate kuni 20000, suurematel kiirustel läheb veaprotsent talumatuks.
 
 Järgnevalt lehelt leiab baud rate ja error rate suhted.

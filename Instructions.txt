@@ -1,0 +1,57 @@
+Required parts:
+1) Any kind of already working arduino or other SPI interface
+2) Atmega168 chip
+3) 16 MHz chip (recommended)
+4) Jumper wires
+5) USB to TTL converter, with GND, VCC, RX, TX and DTR
+6) 10kΩ resistor
+7) 100 nF ceramic condensator
+
+1. Copy everything from the atmega168_8MHz_boards.txt to the end of
+/arduino-1.8.6/hardware/arduino/avr/boards.txt
+(arduino-1.8.6) is your IDE installation folder.
+If your IDE was running, while copying restart the Arduino IDE.
+2. Connect Arduino to PC.
+3. Open ArduinoISP from examples.
+4. Remove uncomment line #define USE_OLD_STYLE wiring (remove // from the beginning of the line)
+5. Upload code to Arduino
+6. Connect your Atmega168 chip with Arduino board as follows, or look it up from .pdf file in the project.
+Arduino -- Atmega168
+D10		->	1
+VCC		->	10kΩ -> 1 (Pull up resistor)
+VCC		->	7
+GND		->	8
+D11		->	17
+D12		->	18
+D13		->	19
+
+Connect 16MHz oscillator to pins 9 and 10, or if possible connect jumper wires to your working Arduino's oscillator.
+Trying to burn bootloader fails without the oscillator, if the chip has been configured to use external oscillator.
+
+7. From boards choose the last one "Atmega168 8MHz" and for programmer choose "Arduino as ISP".
+8. Burn bootloader.
+9. If all goes well, the IDE tells so, if not double check wiring and oscillator.
+10. So now you can upload your sketch with TTL chip or arduino board, that has removable MCU.
+Disconnect the MCU from Arduino and connect it as follows or check wiring from the included .pdf.
+TTL -- 	Arduino
+TX	-> 	2 (RXD)
+RX 	->	3 (TXD)
+DTR -> 	100nF -> 1 (RESET)
+VCC -> 10kΩ -> 1 (Pull up resistor)
+VCC -> 7/ 20
+GND -> 8/ 22
+
+11. Set programmer to your favorite one, like (AVR ISP mkII), for testing upload blink sketch from examples.
+
+If blink uploads and LED starts blinking you are done with this guide.
+And can run any code on your new 8MHz, that you use on 16MHz arduinos.
+But take in considerations of higher error rates when using serial connections.
+
+On this link you can find a table.
+The error rate should be lower than 2%.
+http://www.avrfreaks.net/sites/default/files/AT90USB1287%20Baud%20Rate%20Table%20-%208MHz%20%26%2016MHz.png
+
+Atmega168 Pinout
+http://wiki.t-o-f.info/uploads/Arduino/atmega168_pinout.png
+
+The instructions were tested with Arduino IDE 1.8.5 and Arduino UNO.

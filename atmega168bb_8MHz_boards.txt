@@ -1,0 +1,25 @@
+##############################################################
+
+atmega168_8MHz.name=ATmega168 8MHz
+atmega168_8MHz.upload.tool=avrdude
+atmega168_8MHz.upload.protocol=arduino
+
+atmega168_8MHz=ATmega168
+atmega168_8MHz.upload.maximum_size=14336
+atmega168_8MHz.upload.maximum_data_size=1024
+atmega168_8MHz.upload.speed=19200
+
+atmega168_8MHz.build.board=AVR_DUEMILANOVE
+atmega168_8MHz.bootloader.tool=avrdude
+atmega168_8MHz.bootloader.low_fuses=0xe2
+atmega168_8MHz.bootloader.high_fuses=0xdd
+atmega168_8MHz.bootloader.extended_fuses=0x00
+
+atmega168_8MHz.bootloader.file=atmega/ATmegaBOOT_168_pro_8MHz.hex
+atmega168_8MHz.bootloader.unlock_bits=0x3F
+atmega168_8MHz.bootloader.lock_bits=0x0F
+
+atmega168_8MHz.build.mcu=atmega168
+atmega168_8MHz.build.f_cpu=8000000L
+atmega168_8MHz.build.core=arduino
+atmega168_8MHz.build.variant=standard
